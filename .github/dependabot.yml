@@ -7,7 +7,15 @@ updates:
     groups:
       dependencies:
         patterns: ["*"]
+    ignore:
+      # Kept on the version crossterm depends on, so it is not built twice.
+      - dependency-name: signal-hook
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
+    ignore:
+      # `dtolnay/rust-toolchain@1.88` pins the minimum supported Rust version
+      # checked by CI; it changes only when `rust-version` in Cargo.toml does.
+      - dependency-name: dtolnay/rust-toolchain
