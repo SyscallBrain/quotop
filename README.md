@@ -53,9 +53,17 @@ your API quotas.
 quotop is a single binary written in Rust. It runs on Linux and macOS.
 
 **Prebuilt binaries**: download the archive for your system from the
-[latest release](https://github.com/SyscallBrain/quotop/releases/latest)
-(Linux x86_64 and ARM64, static; macOS Apple Silicon and Intel), extract it and
-put `quotop` somewhere on your `PATH`:
+[latest release](https://github.com/SyscallBrain/quotop/releases/latest):
+
+| System | Archive |
+| --- | --- |
+| Linux x86_64 | `quotop-<version>-x86_64-unknown-linux-musl.tar.gz` |
+| Linux ARM64 / aarch64 (Raspberry Pi 4/5, Graviton, Ampere) | `quotop-<version>-aarch64-unknown-linux-musl.tar.gz` |
+| macOS Apple Silicon (M1 and later) | `quotop-<version>-aarch64-apple-darwin.tar.gz` |
+| macOS Intel | `quotop-<version>-x86_64-apple-darwin.tar.gz` |
+
+The Linux binaries are static, so they run on any distribution. Extract the
+archive and put `quotop` somewhere on your `PATH`:
 
 ```sh
 tar xzf quotop-v0.1.0-x86_64-unknown-linux-musl.tar.gz
