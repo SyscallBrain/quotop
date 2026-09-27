@@ -13,7 +13,7 @@ homepage = "https://github.com/SyscallBrain/quotop"
 readme = "README.md"
 keywords = ["tui", "api", "quota", "credits", "llm"]
 categories = ["command-line-utilities"]
-exclude = ["/.github", "/docs", "/tests/fixtures"]
+include = ["/src", "/locales", "/Cargo.toml", "/Cargo.lock", "/README.md", "/LICENSE", "/CHANGELOG.md", "/config.example.toml"]
 
 [dependencies]
 # `serde` is an optional dependency of `chrono`, enabled explicitly; the default
