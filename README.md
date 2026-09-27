@@ -5,6 +5,7 @@
 **Every API balance, credit and quota you pay for — in one terminal screen.**
 
 [![CI](https://github.com/SyscallBrain/quotop/actions/workflows/ci.yml/badge.svg)](https://github.com/SyscallBrain/quotop/actions/workflows/ci.yml)
+[![crates.io](https://img.shields.io/crates/v/quotop.svg)](https://crates.io/crates/quotop)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Rust 1.88+](https://img.shields.io/badge/rust-1.88%2B-orange.svg)](https://www.rust-lang.org)
 
@@ -63,10 +64,10 @@ install quotop-v0.1.0-x86_64-unknown-linux-musl/quotop ~/.local/bin/
 Each archive has a `.sha256` checksum next to it. On macOS, if Gatekeeper
 blocks the binary, run `xattr -d com.apple.quarantine quotop`.
 
-**With Cargo** (Rust 1.88 or newer):
+**With Cargo** (Rust 1.88 or newer), from [crates.io](https://crates.io/crates/quotop):
 
 ```sh
-cargo install --git https://github.com/SyscallBrain/quotop
+cargo install quotop
 ```
 
 **From source**:
