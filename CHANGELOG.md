@@ -6,6 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## Unreleased
 
+### Added
+
+- Container image (`ghcr.io/syscallbrain/quotop`, amd64 and arm64) and a
+  `Dockerfile` to build it from source.
+
 ## 0.1.0 - 2026-09-27
 
 First public release.

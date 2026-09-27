@@ -41,6 +41,7 @@ your API quotas.
 - [API keys](#api-keys)
 - [Configuration](#configuration)
 - [JSON output](#json-output)
+- [Docker](#docker)
 - [Security](#security)
 - [Languages](#languages)
 - [Limitations](#limitations)
@@ -80,6 +81,9 @@ cargo install --path .
 
 Both Cargo options put `quotop` in `~/.cargo/bin`, which `rustup` adds to your
 `PATH`.
+
+**With Docker**: `docker run --rm -it ghcr.io/syscallbrain/quotop` — see
+[Docker](#docker) for passing your keys.
 
 ## Quick start
 
@@ -380,6 +384,43 @@ Exit codes: `0` success; `1` the result could not be written to stdout; `2`
 usage or configuration error, or output refused by the leak guard (see below).
 Without an interactive terminal, plain `quotop` exits with `2` and suggests
 `--json`.
+
+## Docker
+
+A ready-made image (8 MB: just the static binary, for `amd64` and `arm64`) is
+published on the GitHub Container Registry:
+
+```sh
+docker run --rm -it --user "$(id -u):$(id -g)" \
+  -v ~/.config/quotop:/home/quotop/.config/quotop \
+  -e TZ=Europe/Lisbon \
+  ghcr.io/syscallbrain/quotop
+```
+
+- `-it` is needed for the interactive screen; `--json` works without it.
+- Mounting `~/.config/quotop` gives the container your `config.toml` and
+  `keys.env` (add `:ro` if you don't want the Services screen to write keys).
+  `--user` runs it as you, so it can read a key file with mode `600`. Paths in
+  `key_files` are resolved inside the container, where `~` is `/home/quotop`:
+  a key file outside the mounted directories isn't visible.
+- Or pass keys as environment variables instead:
+  `-e OPENROUTER_API_KEY -e TAVILY_API_KEY` (copies them from your shell).
+- `TZ` shows reset times in your time zone (the default is UTC).
+- To keep your preferences, service choices and the cache between runs, also
+  mount `~/.local/state/quotop` and `~/.cache/quotop` (create them first):
+  `-v ~/.local/state/quotop:/home/quotop/.local/state/quotop -v ~/.cache/quotop:/home/quotop/.cache/quotop`.
+- For Claude, mount the Claude Code login read-only:
+  `-v ~/.claude/.credentials.json:/home/quotop/.claude/.credentials.json:ro`.
+
+For scripts and cron jobs:
+
+```sh
+docker run --rm --user "$(id -u):$(id -g)" \
+  -v ~/.config/quotop:/home/quotop/.config/quotop:ro \
+  ghcr.io/syscallbrain/quotop --json
+```
+
+To build the image yourself: `docker build -t quotop .`
 
 ## Security
 

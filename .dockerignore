@@ -1,0 +1,7 @@
+# Only what the image build needs goes into the context.
+*
+!Cargo.toml
+!Cargo.lock
+!src/
+!locales/
+!dist/
