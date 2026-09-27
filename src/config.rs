@@ -13,7 +13,7 @@ use serde::Deserialize;
 
 use crate::model::Thresholds;
 
-/// File name inside `dirs::config_dir()/quotop/`.
+/// File name inside [`dir`].
 pub const FILE_NAME: &str = "config.toml";
 
 const TOP_LEVEL_KEYS: [&str; 10] = [
@@ -206,10 +206,21 @@ impl std::fmt::Display for ConfigError {
 
 impl std::error::Error for ConfigError {}
 
-/// `dirs::config_dir()/quotop/config.toml`, if there is a configuration
-/// directory.
+/// quotop's configuration directory: `$XDG_CONFIG_HOME/quotop`, or
+/// `~/.config/quotop` — on every system, macOS included. (`dirs::config_dir()`
+/// would be `~/Library/Application Support` on macOS, which is not where users
+/// of a command-line tool look, and not where the default key file lives.)
+pub fn dir() -> Option<PathBuf> {
+    let base = match std::env::var_os("XDG_CONFIG_HOME").map(PathBuf::from) {
+        Some(path) if path.is_absolute() => path,
+        _ => dirs::home_dir()?.join(".config"),
+    };
+    Some(base.join("quotop"))
+}
+
+/// `config.toml` inside [`dir`], if there is a home directory.
 pub fn default_path() -> Option<PathBuf> {
-    Some(dirs::config_dir()?.join("quotop").join(FILE_NAME))
+    Some(dir()?.join(FILE_NAME))
 }
 
 /// Reads the default configuration file. Without one, returns the defaults,
