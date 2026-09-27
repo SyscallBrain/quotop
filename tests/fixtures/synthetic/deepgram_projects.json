@@ -1,0 +1,10 @@
+{
+  "_origin": "synthetic, from the documentation, https://developers.deepgram.com (management API, /v1/projects), 2026-09-26",
+  "projects": [
+    {
+      "project_id": "8a6c8c1a-4a2b-4b1e-9f0d-0f2a6c8c1a4a",
+      "name": "Example",
+      "company": "Example Co"
+    }
+  ]
+}

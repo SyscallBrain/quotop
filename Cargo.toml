@@ -1,0 +1,38 @@
+[package]
+name = "quotop"
+version = "0.1.0"
+edition = "2024"
+# The highest MSRV among the dependencies (not the 1.85 that edition 2024
+# alone would need). CI checks it.
+rust-version = "1.88"
+description = "A terminal dashboard for the balances, credits and quotas of your API services (OpenRouter, Claude, Tavily, ElevenLabs and 22 more)"
+authors = ["SyscallBrain"]
+license = "MIT"
+repository = "https://github.com/SyscallBrain/quotop"
+homepage = "https://github.com/SyscallBrain/quotop"
+readme = "README.md"
+keywords = ["tui", "api", "quota", "credits", "llm"]
+categories = ["command-line-utilities"]
+exclude = ["/.github", "/docs", "/tests/fixtures"]
+
+[dependencies]
+# `serde` is an optional dependency of `chrono`, enabled explicitly; the default
+# features (`clock`/`now`/`std`) are needed for `Utc::now()`.
+chrono = { version = "0.4", features = ["serde"] }
+# No extra features: `event-stream` would pull in `futures-core` and is unused.
+crossterm = "0.29"
+# Config, cache, state and home directories.
+dirs = "6"
+ratatui = "0.30"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Only the `flag` module: SIGTERM/SIGHUP must not leave the terminal in raw
+# mode. Already in the dependency tree through `crossterm`.
+signal-hook = "0.3"
+toml = "0.9"
+# Blocking `ureq` 3 with its default features (`rustls`, `gzip`): no async
+# runtime needed for a handful of parallel requests.
+ureq = "3"
+
+[profile.release]
+strip = true

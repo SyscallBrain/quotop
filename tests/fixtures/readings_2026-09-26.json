@@ -1,0 +1,529 @@
+{
+ "version": 2,
+ "generated_at": "2026-09-26T11:53:04+00:00",
+ "source": "probe_2026-09-26.json",
+ "readings": [
+  {
+   "provider": "tavily",
+   "service": "Tavily",
+   "category": "search",
+   "class": "usage_vs_limit",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 940,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "monthly plan",
+     "unit": "credits",
+     "currency": null,
+     "used": 51,
+     "limit": 1000,
+     "remaining": 949,
+     "resets_at": null,
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "firecrawl",
+   "service": "Firecrawl",
+   "category": "search",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 404,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "credits",
+     "unit": "credits",
+     "currency": null,
+     "used": null,
+     "limit": 1000,
+     "remaining": 1394,
+     "resets_at": "2026-10-08T12:18:25Z",
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "exa",
+   "service": "Exa",
+   "category": "search",
+   "class": "no_api",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 229,
+   "status": {
+    "kind": "invalid_credential",
+    "http": 401
+   },
+   "meters": []
+  },
+  {
+   "provider": "serper",
+   "service": "Serper",
+   "category": "search",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 161,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "credits",
+     "unit": "credits",
+     "currency": null,
+     "used": null,
+     "limit": null,
+     "remaining": 2297,
+     "resets_at": null,
+     "level": "no_reference"
+    }
+   ]
+  },
+  {
+   "provider": "brave",
+   "service": "Brave Search",
+   "category": "search",
+   "class": "rate_limit_only",
+   "cost": "per_request",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 730,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "requests/month",
+     "unit": "requests",
+     "currency": null,
+     "used": null,
+     "limit": 2000,
+     "remaining": 1977,
+     "resets_at": "2026-10-01T00:00:07Z",
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "jina",
+   "service": "Jina",
+   "category": "search",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 693,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "tokens",
+     "unit": "tokens",
+     "currency": null,
+     "used": null,
+     "limit": null,
+     "remaining": 4069550,
+     "resets_at": null,
+     "level": "no_reference"
+    }
+   ]
+  },
+  {
+   "provider": "openrouter",
+   "service": "OpenRouter",
+   "category": "llm",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 42,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "credits",
+     "unit": "currency",
+     "currency": "USD",
+     "used": 29.569193949,
+     "limit": 30,
+     "remaining": 0.430806,
+     "resets_at": null,
+     "level": "critical"
+    }
+   ]
+  },
+  {
+   "provider": "opencode_go",
+   "service": "OpenCode Go",
+   "category": "subscription",
+   "class": "usage_vs_limit",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 555,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "5h",
+     "unit": "percent",
+     "currency": null,
+     "used": 0,
+     "limit": 100,
+     "remaining": 100,
+     "resets_at": "2026-09-26T13:38:48Z",
+     "level": "ok"
+    },
+    {
+     "label": "weekly",
+     "unit": "percent",
+     "currency": null,
+     "used": 47,
+     "limit": 100,
+     "remaining": 53,
+     "resets_at": "2026-09-28T00:00:00Z",
+     "level": "ok"
+    },
+    {
+     "label": "monthly",
+     "unit": "percent",
+     "currency": null,
+     "used": 48,
+     "limit": 100,
+     "remaining": 52,
+     "resets_at": "2026-10-16T20:39:04Z",
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "claude",
+   "service": "Claude",
+   "category": "subscription",
+   "class": "usage_vs_limit",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 308,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "5h",
+     "unit": "percent",
+     "currency": null,
+     "used": 69.0,
+     "limit": 100,
+     "remaining": 31.0,
+     "resets_at": "2026-09-26T13:39:59Z",
+     "level": "ok"
+    },
+    {
+     "label": "7 days",
+     "unit": "percent",
+     "currency": null,
+     "used": 38.0,
+     "limit": 100,
+     "remaining": 62.0,
+     "resets_at": "2026-10-01T12:59:59Z",
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "deepseek",
+   "service": "DeepSeek",
+   "category": "llm",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 570,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "minimax",
+   "service": "MiniMax",
+   "category": "llm",
+   "class": "no_api",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 675,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "xai",
+   "service": "xAI",
+   "category": "llm",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 324,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "groq",
+   "service": "Groq",
+   "category": "llm",
+   "class": "no_api",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 181,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": []
+  },
+  {
+   "provider": "gemini",
+   "service": "Gemini",
+   "category": "llm",
+   "class": "no_api",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 125,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": []
+  },
+  {
+   "provider": "mistral",
+   "service": "Mistral",
+   "category": "llm",
+   "class": "no_api",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 98,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "cerebras",
+   "service": "Cerebras",
+   "category": "llm",
+   "class": "no_api",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 125,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "ollama",
+   "service": "Ollama Cloud",
+   "category": "llm",
+   "class": "usage_vs_limit",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 189,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "session",
+     "unit": "percent",
+     "currency": null,
+     "used": 0,
+     "limit": 100,
+     "remaining": 100,
+     "resets_at": null,
+     "level": "ok"
+    },
+    {
+     "label": "weekly",
+     "unit": "percent",
+     "currency": null,
+     "used": 0.1,
+     "limit": 100,
+     "remaining": 99.9,
+     "resets_at": null,
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "elevenlabs",
+   "service": "ElevenLabs",
+   "category": "other",
+   "class": "usage_vs_limit",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 468,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "characters",
+     "unit": "characters",
+     "currency": null,
+     "used": 794,
+     "limit": 10000,
+     "remaining": 9206,
+     "resets_at": "2026-10-02T21:46:45Z",
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "deepgram",
+   "service": "Deepgram",
+   "category": "other",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 625,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "fal",
+   "service": "fal.ai",
+   "category": "other",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 280,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "composio",
+   "service": "Composio",
+   "category": "other",
+   "class": "usage_vs_limit",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 228,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "context7",
+   "service": "Context7",
+   "category": "other",
+   "class": "rate_limit_only",
+   "cost": "per_request",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 1794,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "requests/month",
+     "unit": "requests",
+     "currency": null,
+     "used": null,
+     "limit": 1000,
+     "remaining": 981,
+     "resets_at": "2026-10-01T00:00:00Z",
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "twilio",
+   "service": "Twilio",
+   "category": "other",
+   "class": "exact_balance",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 410,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "balance",
+     "unit": "currency",
+     "currency": "USD",
+     "used": null,
+     "limit": null,
+     "remaining": 8.1257,
+     "resets_at": null,
+     "level": "no_reference"
+    }
+   ]
+  },
+  {
+   "provider": "pushover",
+   "service": "Pushover",
+   "category": "other",
+   "class": "usage_vs_limit",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 200,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  },
+  {
+   "provider": "github",
+   "service": "GitHub",
+   "category": "other",
+   "class": "rate_limit_only",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 375,
+   "status": {
+    "kind": "ok"
+   },
+   "meters": [
+    {
+     "label": "core/hour",
+     "unit": "requests",
+     "currency": null,
+     "used": 0,
+     "limit": 5000,
+     "remaining": 5000,
+     "resets_at": "2026-09-26T12:53:03Z",
+     "level": "ok"
+    }
+   ]
+  },
+  {
+   "provider": "x",
+   "service": "X API",
+   "category": "other",
+   "class": "usage_vs_limit",
+   "cost": "free",
+   "read_at": "2026-09-26T11:53:04+00:00",
+   "duration_ms": 131,
+   "status": {
+    "kind": "no_credential"
+   },
+   "meters": []
+  }
+ ]
+}

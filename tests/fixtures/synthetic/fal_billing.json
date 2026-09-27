@@ -1,0 +1,7 @@
+{
+  "_origin": "synthetic, from the documentation, https://docs.fal.ai/platform-apis/v1/account/billing, 2026-09-26",
+  "credits": {
+    "current_balance": 7.42,
+    "currency": "USD"
+  }
+}

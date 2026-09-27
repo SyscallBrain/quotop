@@ -1,0 +1,1324 @@
+{
+ "generated_at": "2026-09-26T11:53:04+00:00",
+ "generator": "probe.py",
+ "timeout_s": 10,
+ "probes": [
+  {
+   "id": "tavily_usage",
+   "service": "Tavily",
+   "method": "GET",
+   "url_template": "https://api.tavily.com/usage",
+   "credential": "TAVILY_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 940,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "key": {
+      "usage": 51,
+      "limit": null,
+      "search_usage": 39,
+      "crawl_usage": 0,
+      "extract_usage": 12,
+      "map_usage": 0,
+      "research_usage": 0
+     },
+     "account": {
+      "current_plan": "<str:10>",
+      "plan_usage": 51,
+      "plan_limit": 1000,
+      "search_usage": 39,
+      "crawl_usage": 0,
+      "extract_usage": 12,
+      "map_usage": 0,
+      "research_usage": 0,
+      "paygo_usage": 0,
+      "paygo_limit": null
+     }
+    }
+   }
+  },
+  {
+   "id": "firecrawl_v1",
+   "service": "Firecrawl",
+   "method": "GET",
+   "url_template": "https://api.firecrawl.dev/v1/team/credit-usage",
+   "credential": "FIRECRAWL_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 428,
+    "headers": {
+     "content-type": "application/json; charset=utf-8"
+    },
+    "body": {
+     "success": true,
+     "data": {
+      "remaining_credits": 1394,
+      "plan_credits": 1000,
+      "billing_period_start": "2026-09-08T12:18:25.660Z",
+      "billing_period_end": "2026-10-08T12:18:25.660Z"
+     }
+    }
+   }
+  },
+  {
+   "id": "firecrawl_v2",
+   "service": "Firecrawl",
+   "method": "GET",
+   "url_template": "https://api.firecrawl.dev/v2/team/credit-usage",
+   "credential": "FIRECRAWL_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 404,
+    "headers": {
+     "content-type": "application/json; charset=utf-8"
+    },
+    "body": {
+     "success": true,
+     "data": {
+      "remainingCredits": 1394,
+      "planCredits": 1000,
+      "billingPeriodStart": "2026-09-08T12:18:25.660Z",
+      "billingPeriodEnd": "2026-10-08T12:18:25.660Z"
+     }
+    }
+   }
+  },
+  {
+   "id": "exa_admin_keys",
+   "service": "Exa",
+   "method": "GET",
+   "url_template": "https://admin-api.exa.ai/team-management/api-keys",
+   "credential": "EXA_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 401,
+    "ms": 229,
+    "headers": {
+     "content-type": "application/json; charset=utf-8"
+    },
+    "body": {
+     "error": "Unauthorized"
+    }
+   }
+  },
+  {
+   "id": "serper_account",
+   "service": "Serper",
+   "method": "GET",
+   "url_template": "https://google.serper.dev/account",
+   "credential": "SERPER_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 161,
+    "headers": {
+     "content-type": "application/json; charset=utf-8"
+    },
+    "body": {
+     "balance": 2297,
+     "rateLimit": 50
+    }
+   }
+  },
+  {
+   "id": "brave_search",
+   "service": "Brave Search",
+   "method": "GET",
+   "url_template": "https://api.search.brave.com/res/v1/web/search?q=ratatui&count=1",
+   "credential": "BRAVE_API_KEY",
+   "cost": "1 quota request",
+   "credential_present": true,
+   "brave_search_api_key_same": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 730,
+    "headers": {
+     "content-type": "application/json",
+     "x-ratelimit-limit": "1, 2000",
+     "x-ratelimit-policy": "1;w=1, 2000;w=2592000",
+     "x-ratelimit-remaining": "0, 1977",
+     "x-ratelimit-reset": "1, 389223",
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "type": "search",
+     "query": {
+      "original": "<str:7>",
+      "show_strict_warning": false,
+      "is_navigational": true,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "<str:2>",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "<str:0>",
+      "city": "<str:0>",
+      "header_country": "<str:0>",
+      "more_results_available": true,
+      "state": "<str:0>",
+      "related_queries": [
+       "<str:13>",
+       "<str:13>",
+       "<str:15>",
+       "<+7 items>"
+      ]
+     },
+     "mixed": {
+      "type": "mixed",
+      "main": [
+       {
+        "type": "web",
+        "index": 0,
+        "all": false
+       },
+       {
+        "type": "web",
+        "index": 1,
+        "all": false
+       },
+       {
+        "type": "web",
+        "index": 2,
+        "all": false
+       },
+       "<+16 items>"
+      ],
+      "top": [],
+      "side": []
+     },
+     "videos": {
+      "type": "videos",
+      "results": [
+       {
+        "type": "video_result",
+        "url": "<str:90>",
+        "title": "<str:60>",
+        "description": "<str:98>",
+        "age": "<str:12>",
+        "page_age": "2025-06-05T15:59:44",
+        "fetched_content_timestamp": 1789939616,
+        "video": {},
+        "meta_url": {
+         "scheme": "<str:5>",
+         "netloc": "<str:10>",
+         "hostname": "<str:14>",
+         "favicon": "<str:264>",
+         "path": "<str:80>"
+        },
+        "thumbnail": {
+         "src": "<str:381>",
+         "original": "<str:200>"
+        }
+       },
+       {
+        "type": "video_result",
+        "url": "<str:43>",
+        "title": "<str:66>",
+        "description": "<str:160>",
+        "age": "<str:16>",
+        "page_age": "2025-01-18T14:57:51",
+        "fetched_content_timestamp": 1789882116,
+        "video": {
+         "duration": "<str:5>",
+         "creator": "<str:16>",
+         "publisher": "<str:7>"
+        },
+        "meta_url": {
+         "scheme": "<str:5>",
+         "netloc": "<str:11>",
+         "hostname": "<str:15>",
+         "favicon": "<str:265>",
+         "path": "<str:7>"
+        },
+        "thumbnail": {
+         "src": "<str:172>",
+         "original": "<str:52>"
+        }
+       },
+       {
+        "type": "video_result",
+        "url": "<str:93>",
+        "title": "<str:68>",
+        "description": "<str:141>",
+        "age": "<str:17>",
+        "page_age": "2024-02-15T16:54:37",
+        "fetched_content_timestamp": 1787421504,
+        "video": {},
+        "meta_url": {
+         "scheme": "<str:5>",
+         "netloc": "<str:10>",
+         "hostname": "<str:14>",
+         "favicon": "<str:264>",
+         "path": "<str:83>"
+        },
+        "thumbnail": {
+         "src": "<str:406>",
+         "original": "<str:217>"
+        }
+       },
+       "<+2 items>"
+      ],
+      "mutated_by_goggles": false
+     },
+     "web": {
+      "type": "search",
+      "results": [
+       {
+        "title": "<str:17>",
+        "url": "<str:19>",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "<str:120>",
+        "profile": {
+         "name": "<str:7>",
+         "url": "<str:19>",
+         "long_name": "<str:10>",
+         "img": "<str:259>"
+        },
+        "language": "<str:2>",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "<str:7>",
+        "is_live": false,
+        "meta_url": {
+         "scheme": "<str:5>",
+         "netloc": "<str:10>",
+         "hostname": "<str:10>",
+         "favicon": "<str:259>",
+         "path": "<str:0>"
+        },
+        "thumbnail": {
+         "src": "<str:144>",
+         "original": "<str:33>",
+         "logo": false
+        },
+        "cluster_type": "<str:7>",
+        "cluster": [
+         {
+          "title": "<str:12>",
+          "url": "<str:33>",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "<str:301>",
+          "family_friendly": true
+         },
+         {
+          "title": "<str:4>",
+          "url": "<str:38>",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "<str:556>",
+          "family_friendly": true
+         }
+        ]
+       }
+      ],
+      "family_friendly": true
+     }
+    }
+   }
+  },
+  {
+   "id": "jina_fe_user",
+   "service": "Jina",
+   "method": "GET",
+   "url_template": "https://embeddings-dashboard-api.jina.ai/api/v1/api_key/fe_user?api_key={JINA_API_KEY}",
+   "credential": "JINA_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 693,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "user_id": "<str:36>",
+     "email": null,
+     "full_name": "<str:41>",
+     "customer_id": null,
+     "avatar_url": "<str:0>",
+     "billing_address": {},
+     "payment_method": {},
+     "wallet": {
+      "user_id": "<str:36>",
+      "trial_balance": 4069550,
+      "trial_start": "2026-01-23T09:21:24.387950+00:00",
+      "trial_end": "2036-01-23T09:21:24.387950+00:00",
+      "regular_balance": 0,
+      "total_balance": 4069550,
+      "metadata": {}
+     },
+     "metadata": {
+      "speed_level": 0,
+      "pay_by_requests": null,
+      "token_multiplier": null,
+      "request_multiplier": null,
+      "disable_self_purchase": null,
+      "last_purchased_price_id": null,
+      "last_purchased_product_name": null,
+      "num_keys": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "openrouter_key",
+   "service": "OpenRouter",
+   "method": "GET",
+   "url_template": "https://openrouter.ai/api/v1/key",
+   "credential": "OPENROUTER_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 168,
+    "headers": {
+     "content-type": "application/json",
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "data": {
+      "label": "<str:18>",
+      "is_management_key": false,
+      "is_provisioning_key": false,
+      "limit": null,
+      "limit_reset": null,
+      "limit_remaining": null,
+      "include_byok_in_limit": false,
+      "usage": 29.569193949,
+      "usage_daily": 0,
+      "usage_weekly": 9.633375589,
+      "usage_monthly": 9.69016608,
+      "byok_usage": 0.02325145,
+      "byok_usage_daily": 0,
+      "byok_usage_weekly": 0,
+      "byok_usage_monthly": 0,
+      "is_free_tier": false,
+      "expires_at": null,
+      "creator_user_id": "<str:32>",
+      "organization_id": null,
+      "workspace_id": "<str:36>",
+      "allowed_data_regions": [
+       "<str:6>"
+      ],
+      "free_model_daily_requests": {
+       "used": 0,
+       "limit": 1000,
+       "remaining": 1000
+      },
+      "rate_limit": {
+       "requests": -1,
+       "interval": "10s",
+       "note": "<str:44>"
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "openrouter_credits",
+   "service": "OpenRouter",
+   "method": "GET",
+   "url_template": "https://openrouter.ai/api/v1/credits",
+   "credential": "OPENROUTER_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 42,
+    "headers": {
+     "content-type": "application/json",
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "data": {
+      "total_credits": 30,
+      "total_usage": 29.569193949
+     }
+    }
+   }
+  },
+  {
+   "id": "opencode_go_usage",
+   "service": "OpenCode Go",
+   "method": "GET",
+   "url_template": "https://opencode.ai/zen/go/v1/usage",
+   "credential": "@opencode_auth_json",
+   "cost": "free (undocumented)",
+   "credential_origin": "~/.config/quotop/keys.env",
+   "opencode_env_matches_auth_json": true,
+   "credential_present": true,
+   "response": {
+    "http": 200,
+    "ms": 555,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "usage": {
+      "rolling": {
+       "status": "ok",
+       "percent": 0,
+       "resetsAt": "2026-09-26T13:38:48.648Z"
+      },
+      "weekly": {
+       "status": "ok",
+       "percent": 47,
+       "resetsAt": "2026-09-28T00:00:00.000Z"
+      },
+      "monthly": {
+       "status": "ok",
+       "percent": 48,
+       "resetsAt": "2026-10-16T20:39:04.000Z"
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "claude_oauth_usage",
+   "service": "Claude (subscription)",
+   "method": "GET",
+   "url_template": "https://api.anthropic.com/api/oauth/usage",
+   "credential": "@claude_credentials_json",
+   "cost": "free (undocumented)",
+   "credential_origin": "~/.config/quotop/keys.env",
+   "token_expires_in_min": 248,
+   "credential_present": true,
+   "response": {
+    "http": 200,
+    "ms": 308,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "five_hour": {
+      "utilization": 69.0,
+      "resets_at": "2026-09-26T13:39:59.980673+00:00",
+      "limit_dollars": null,
+      "used_dollars": null,
+      "remaining_dollars": null,
+      "locked_reason": null
+     },
+     "seven_day": {
+      "utilization": 38.0,
+      "resets_at": "2026-10-01T12:59:59.980691+00:00",
+      "limit_dollars": null,
+      "used_dollars": null,
+      "remaining_dollars": null,
+      "locked_reason": null
+     },
+     "seven_day_oauth_apps": null,
+     "seven_day_opus": null,
+     "seven_day_sonnet": null,
+     "seven_day_cowork": null,
+     "seven_day_omelette": null,
+     "tangelo": null,
+     "iguana_necktie": {
+      "utilization": 0.0,
+      "resets_at": "2026-11-05T07:59:00+00:00",
+      "limit_dollars": 100,
+      "used_dollars": 0.0,
+      "remaining_dollars": 100.0,
+      "locked_reason": null
+     },
+     "omelette_promotional": null,
+     "nimbus_quill": {
+      "utilization": 0.0,
+      "resets_at": null,
+      "limit_dollars": null,
+      "used_dollars": null,
+      "remaining_dollars": null,
+      "locked_reason": null
+     },
+     "cinder_cove": null,
+     "copper_kite": null,
+     "brass_thimble": null,
+     "harbor_lantern": null,
+     "wattle_ember": null,
+     "amber_ladder": null,
+     "amber_cistern": null,
+     "juniper_tide": null,
+     "cedar_ember": null,
+     "amber_gauge": null,
+     "extra_usage": {
+      "is_enabled": false,
+      "monthly_limit": null,
+      "used_credits": null,
+      "utilization": null,
+      "currency": null,
+      "decimal_places": null,
+      "disabled_reason": null,
+      "user_disabled": false,
+      "spend_limit_reached": false,
+      "credits_ever_enabled": false,
+      "daily": null,
+      "weekly": null
+     },
+     "limits": [
+      {
+       "kind": "<str:7>",
+       "group": "<str:7>",
+       "percent": 69,
+       "severity": "<str:6>",
+       "resets_at": "2026-09-26T13:39:59.980673+00:00",
+       "scope": null,
+       "is_active": true
+      },
+      {
+       "kind": "<str:10>",
+       "group": "<str:6>",
+       "percent": 38,
+       "severity": "<str:6>",
+       "resets_at": "2026-10-01T12:59:59.980691+00:00",
+       "scope": null,
+       "is_active": false
+      }
+     ],
+     "spend": {
+      "used": {
+       "amount_minor": 0,
+       "currency": "USD",
+       "exponent": 2
+      },
+      "limit": null,
+      "percent": 0,
+      "severity": "<str:6>",
+      "enabled": false,
+      "disabled_reason": null,
+      "cap": null,
+      "balance": null,
+      "auto_reload": null,
+      "disclaimer": "<str:113>",
+      "can_purchase_credits": false,
+      "can_toggle": false
+     },
+     "member_dashboard_available": false,
+     "seven_day_breakdown": {
+      "as_of": "2026-09-26T11:52:57.016288+00:00",
+      "window_started_at": "2026-09-24T12:59:59.980691+00:00",
+      "rows": [
+       {
+        "key": "<str:11>",
+        "display_name": "<str:11>",
+        "percent": 100
+       },
+       {
+        "key": "<str:4>",
+        "display_name": "<str:5>",
+        "percent": 0
+       },
+       {
+        "key": "<str:6>",
+        "display_name": "<str:6>",
+        "percent": 0
+       },
+       "<+1 items>"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "deepseek_balance",
+   "service": "DeepSeek",
+   "method": "GET",
+   "url_template": "https://api.deepseek.com/user/balance",
+   "credential": "DEEPSEEK_API_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 401,
+    "ms": 570,
+    "headers": {
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "_text": "Authentication Fails (governor)"
+    }
+   }
+  },
+  {
+   "id": "minimax_token_plan",
+   "service": "MiniMax",
+   "method": "GET",
+   "url_template": "https://www.minimax.io/v1/token_plan/remains",
+   "credential": "MINIMAX_API_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 200,
+    "ms": 675,
+    "headers": {
+     "content-type": "application/json; charset=utf-8"
+    },
+    "body": {
+     "base_resp": {
+      "status_code": 1004,
+      "status_msg": "login fail: Please carry the API secret key in the 'Authorization' field of the request header"
+     }
+    }
+   }
+  },
+  {
+   "id": "xai_api_key",
+   "service": "xAI",
+   "method": "GET",
+   "url_template": "https://api.x.ai/v1/api-key",
+   "credential": "XAI_API_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 401,
+    "ms": 172,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "code": "unauthenticated:no-credentials",
+     "error": "No credentials presented."
+    }
+   }
+  },
+  {
+   "id": "xai_mgmt_prepaid",
+   "service": "xAI",
+   "method": "GET",
+   "url_template": "https://management-api.x.ai/v1/billing/teams/TEAM/prepaid/balance",
+   "credential": "XAI_MANAGEMENT_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 400,
+    "ms": 324,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "code": 3,
+     "message": "Invalid uuid.",
+     "details": []
+    }
+   }
+  },
+  {
+   "id": "groq_models",
+   "service": "Groq",
+   "method": "GET",
+   "url_template": "https://api.groq.com/openai/v1/models",
+   "credential": "GROQ_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 181,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "object": "<str:4>",
+     "data": [
+      {
+       "id": "<str:16>",
+       "object": "<str:5>",
+       "created": 1693721698,
+       "owned_by": "<str:6>",
+       "active": true,
+       "context_window": 448,
+       "public_apps": null,
+       "max_completion_tokens": 448,
+       "hugging_face_id": "<str:23>",
+       "name": "<str:7>",
+       "input_modalities": [
+        "<str:5>"
+       ],
+       "output_modalities": [
+        "<str:13>"
+       ],
+       "context_length": 448,
+       "max_output_length": 448
+      },
+      {
+       "id": "<str:22>",
+       "object": "<str:5>",
+       "created": 1728413088,
+       "owned_by": "<str:6>",
+       "active": true,
+       "context_window": 448,
+       "public_apps": null,
+       "max_completion_tokens": 448,
+       "hugging_face_id": "<str:29>",
+       "name": "<str:22>",
+       "input_modalities": [
+        "<str:5>"
+       ],
+       "output_modalities": [
+        "<str:13>"
+       ],
+       "context_length": 448,
+       "max_output_length": 448
+      },
+      {
+       "id": "<str:29>",
+       "object": "<str:5>",
+       "created": 1766186316,
+       "owned_by": "<str:11>",
+       "active": true,
+       "context_window": 4000,
+       "public_apps": null,
+       "max_completion_tokens": 50000,
+       "name": "<str:30>",
+       "input_modalities": [
+        "<str:4>"
+       ],
+       "output_modalities": [
+        "<str:6>"
+       ],
+       "context_length": 4000,
+       "max_output_length": 50000,
+       "pricing": {
+        "prompt": "0.000022",
+        "image": "0",
+        "request": "0",
+        "input_cache_read": "0.000011"
+       }
+      },
+      "<+8 items>"
+     ]
+    }
+   }
+  },
+  {
+   "id": "gemini_models",
+   "service": "Gemini",
+   "method": "GET",
+   "url_template": "https://generativelanguage.googleapis.com/v1beta/models?pageSize=1",
+   "credential": "GOOGLE_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 125,
+    "headers": {
+     "content-type": "application/json; charset=UTF-8",
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "models": [
+      {
+       "name": "<str:23>",
+       "version": "001",
+       "displayName": "<str:16>",
+       "description": "<str:129>",
+       "inputTokenLimit": 1048576,
+       "outputTokenLimit": 65536,
+       "supportedGenerationMethods": [
+        "<str:15>",
+        "<str:11>",
+        "<str:19>",
+        "<+1 items>"
+       ],
+       "temperature": 1,
+       "topP": 0.95,
+       "topK": 64,
+       "maxTemperature": 2,
+       "thinking": true
+      }
+     ],
+     "nextPageToken": "<str:36>"
+    }
+   }
+  },
+  {
+   "id": "mistral_models",
+   "service": "Mistral",
+   "method": "GET",
+   "url_template": "https://api.mistral.ai/v1/models",
+   "credential": "MISTRAL_API_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 401,
+    "ms": 98,
+    "headers": {
+     "content-type": "application/json",
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "detail": "Invalid API Key"
+    }
+   }
+  },
+  {
+   "id": "cerebras_models",
+   "service": "Cerebras",
+   "method": "GET",
+   "url_template": "https://api.cerebras.ai/v1/models",
+   "credential": "CEREBRAS_API_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 403,
+    "ms": 125,
+    "headers": {
+     "content-type": "application/json",
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "detail": "Not authenticated"
+    }
+   }
+  },
+  {
+   "id": "ollama_usage",
+   "service": "Ollama (cloud)",
+   "method": "GET",
+   "url_template": "https://ollama.com/api/usage",
+   "credential": "OLLAMA_API_KEY",
+   "cost": "free (undocumented)",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 189,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "activity": {
+      "cost": "0.00000",
+      "period": {
+       "type": "last_4_weeks",
+       "starting_at": "2026-08-31T00:00:00Z",
+       "ending_at": "2026-09-26T11:52:59.475265874Z"
+      },
+      "models": []
+     },
+     "limits": {
+      "session": {
+       "usage": 0,
+       "models": []
+      },
+      "weekly": {
+       "usage": 0.001,
+       "models": [
+        {
+         "name": "<str:11>",
+         "request_count": 2
+        },
+        {
+         "name": "<str:16>",
+         "request_count": 2
+        }
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "elevenlabs_sub",
+   "service": "ElevenLabs",
+   "method": "GET",
+   "url_template": "https://api.elevenlabs.io/v1/user/subscription",
+   "credential": "ELEVENLABS_API_KEY",
+   "cost": "free",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 468,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "tier": "free",
+     "character_count": 794,
+     "character_limit": 10000,
+     "max_character_limit_extension": 0,
+     "max_credit_limit_extension": 0,
+     "can_extend_character_limit": false,
+     "allowed_to_extend_character_limit": false,
+     "next_character_count_reset_unix": 1790977605,
+     "voice_slots_used": 0,
+     "professional_voice_slots_used": 0,
+     "professional_voice_slots_used_in_workspace": 0,
+     "voice_limit": 3,
+     "max_voice_add_edits": 54,
+     "voice_add_edit_counter": 0,
+     "professional_voice_limit": 0,
+     "can_extend_voice_limit": false,
+     "can_use_instant_voice_cloning": false,
+     "can_use_professional_voice_cloning": false,
+     "currency": "usd",
+     "current_overage": {
+      "amount": "0",
+      "currency": "usd"
+     },
+     "status": "free",
+     "billing_period": "<str:14>",
+     "character_refresh_period": "<str:14>",
+     "next_invoice": null,
+     "open_invoices": [],
+     "has_open_invoices": false,
+     "pending_change": null,
+     "has_used_starter_coupon_on_account": false,
+     "has_used_creator_coupon_on_account": false
+    }
+   }
+  },
+  {
+   "id": "deepgram_projects",
+   "service": "Deepgram",
+   "method": "GET",
+   "url_template": "https://api.deepgram.com/v1/projects",
+   "credential": "DEEPGRAM_API_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 401,
+    "ms": 625,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "category": "UNAUTHORIZED",
+     "message": "Authentication failed.",
+     "details": "<str:49>",
+     "request_id": "<str:36>"
+    }
+   }
+  },
+  {
+   "id": "fal_billing",
+   "service": "fal.ai",
+   "method": "GET",
+   "url_template": "https://api.fal.ai/v1/account/billing?expand=credits",
+   "credential": "FAL_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 401,
+    "ms": 280,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "error": {
+      "type": "authorization_error",
+      "message": "API key authentication required"
+     }
+    }
+   }
+  },
+  {
+   "id": "composio_usage",
+   "service": "Composio",
+   "method": "POST",
+   "url_template": "https://backend.composio.dev/api/v3.1/project/usage/summary",
+   "credential": "COMPOSIO_API_KEY",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 401,
+    "ms": 228,
+    "headers": {
+     "content-type": "application/json"
+    },
+    "body": {
+     "error": {
+      "message": "No authentication provided",
+      "code": 906,
+      "slug": "<str:19>",
+      "status": 401,
+      "request_id": "<str:36>",
+      "suggested_fix": "<str:0>"
+     }
+    }
+   }
+  },
+  {
+   "id": "context7_search",
+   "service": "Context7",
+   "method": "GET",
+   "url_template": "https://context7.com/api/v2/libs/search?libraryName=ratatui&query=tui",
+   "credential": "CONTEXT7_API_KEY",
+   "cost": "1 quota request",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 1794,
+    "headers": {
+     "content-type": "application/json",
+     "context7-quota-tier": "free",
+     "ratelimit-limit": "1000",
+     "ratelimit-remaining": "981",
+     "ratelimit-reset": "1790812800"
+    },
+    "body": {
+     "results": [
+      {
+       "id": "<str:20>",
+       "title": "<str:7>",
+       "description": "<str:144>",
+       "branch": "<str:4>",
+       "lastUpdateDate": "2026-09-11T01:23:18.281Z",
+       "state": "<str:9>",
+       "totalTokens": 1344682,
+       "totalSnippets": 12065,
+       "stars": -1,
+       "trustScore": 9.7,
+       "benchmarkScore": 73.89,
+       "versions": []
+      },
+      {
+       "id": "<str:27>",
+       "title": "<str:7>",
+       "description": "<str:125>",
+       "branch": "<str:4>",
+       "lastUpdateDate": "2026-08-25T20:57:13.442Z",
+       "state": "<str:9>",
+       "totalTokens": 119605,
+       "totalSnippets": 2011,
+       "stars": -1,
+       "trustScore": 9.1,
+       "benchmarkScore": 83.52,
+       "versions": []
+      },
+      {
+       "id": "<str:28>",
+       "title": "<str:7>",
+       "description": "<str:130>",
+       "branch": "<str:4>",
+       "lastUpdateDate": "2026-09-07T00:41:10.951Z",
+       "state": "<str:9>",
+       "totalTokens": 271706,
+       "totalSnippets": 4184,
+       "stars": -1,
+       "trustScore": 9.1,
+       "benchmarkScore": 77.1,
+       "versions": []
+      },
+      "<+2 items>"
+     ],
+     "searchFilterApplied": false
+    }
+   }
+  },
+  {
+   "id": "twilio_balance",
+   "service": "Twilio",
+   "method": "GET",
+   "url_template": "https://api.twilio.com/2010-04-01/Accounts/{TWILIO_ACCOUNT_SID}/Balance.json",
+   "credential": "TWILIO_ACCOUNT_SID+TWILIO_AUTH_TOKEN",
+   "cost": "free",
+   "credential_present": true,
+   "response": {
+    "http": 200,
+    "ms": 410,
+    "headers": {
+     "content-type": "application/json;charset=utf-8"
+    },
+    "body": {
+     "account_sid": "<str:34>",
+     "balance": "8.1257",
+     "currency": "USD"
+    }
+   }
+  },
+  {
+   "id": "pushover_limits",
+   "service": "Pushover",
+   "method": "GET",
+   "url_template": "https://api.pushover.net/1/apps/limits.json?token={PUSHOVER_APP_TOKEN}",
+   "credential": "PUSHOVER_APP_TOKEN",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 400,
+    "ms": 200,
+    "headers": {
+     "content-type": "application/json; charset=utf-8",
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "token": "<str:7>",
+     "errors": [
+      "<str:28>"
+     ],
+     "status": 0,
+     "request": "<str:36>"
+    }
+   }
+  },
+  {
+   "id": "github_rate_limit",
+   "service": "GitHub",
+   "method": "GET",
+   "url_template": "https://api.github.com/rate_limit",
+   "credential": "GITHUB_TOKEN",
+   "cost": "free (does not count toward the limit)",
+   "credential_present": true,
+   "credential_origin": "~/.config/quotop/keys.env",
+   "response": {
+    "http": 200,
+    "ms": 375,
+    "headers": {
+     "content-type": "application/json; charset=utf-8",
+     "x-ratelimit-limit": "5000",
+     "x-ratelimit-remaining": "5000",
+     "x-ratelimit-reset": "1790427183",
+     "x-ratelimit-used": "0",
+     "x-ratelimit-resource": "core",
+     "x-content-type-options": "nosniff"
+    },
+    "body": {
+     "resources": {
+      "core": {
+       "limit": 5000,
+       "used": 0,
+       "remaining": 5000,
+       "reset": 1790427183
+      },
+      "search": {
+       "limit": 30,
+       "used": 0,
+       "remaining": 30,
+       "reset": 1790423643
+      },
+      "graphql": {
+       "limit": 5000,
+       "used": 0,
+       "remaining": 5000,
+       "reset": 1790427183
+      },
+      "integration_manifest": {
+       "limit": 5000,
+       "used": 0,
+       "remaining": 5000,
+       "reset": 1790427183
+      },
+      "source_import": {
+       "limit": 100,
+       "used": 0,
+       "remaining": 100,
+       "reset": 1790423643
+      },
+      "code_scanning_autofix": {
+       "limit": 10,
+       "used": 0,
+       "remaining": 10,
+       "reset": 1790423643
+      },
+      "actions_runner_registration": {
+       "limit": 10000,
+       "used": 0,
+       "remaining": 10000,
+       "reset": 1790427183
+      },
+      "scim": {
+       "limit": 15000,
+       "used": 0,
+       "remaining": 15000,
+       "reset": 1790427183
+      },
+      "dependency_snapshots": {
+       "limit": 100,
+       "used": 0,
+       "remaining": 100,
+       "reset": 1790423643
+      },
+      "dependency_sbom": {
+       "limit": 100,
+       "used": 0,
+       "remaining": 100,
+       "reset": 1790423643
+      },
+      "audit_log": {
+       "limit": 1750,
+       "used": 0,
+       "remaining": 1750,
+       "reset": 1790427183
+      },
+      "audit_log_streaming": {
+       "limit": 15,
+       "used": 0,
+       "remaining": 15,
+       "reset": 1790427183
+      },
+      "code_search": {
+       "limit": 10,
+       "used": 0,
+       "remaining": 10,
+       "reset": 1790423643
+      },
+      "copilot_usage_records": {
+       "limit": 1750,
+       "used": 0,
+       "remaining": 1750,
+       "reset": 1790427183
+      },
+      "enterprise_token_inventory": {
+       "limit": 1750,
+       "used": 0,
+       "remaining": 1750,
+       "reset": 1790427183
+      }
+     },
+     "rate": {
+      "limit": 5000,
+      "used": 0,
+      "remaining": 5000,
+      "reset": 1790427183
+     }
+    }
+   }
+  },
+  {
+   "id": "x_usage_tweets",
+   "service": "X API",
+   "method": "GET",
+   "url_template": "https://api.x.com/2/usage/tweets",
+   "credential": "X_BEARER_TOKEN",
+   "cost": "free",
+   "credential_present": false,
+   "response": {
+    "http": 401,
+    "ms": 131,
+    "headers": {
+     "content-type": "application/problem+json"
+    },
+    "body": {
+     "title": "<str:12>",
+     "type": "about:blank",
+     "status": 401,
+     "detail": "Unauthorized"
+    }
+   }
+  }
+ ]
+}

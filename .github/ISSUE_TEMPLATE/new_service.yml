@@ -1,0 +1,25 @@
+name: New service
+description: Ask for (or propose) support for another API service
+labels: [new service]
+body:
+  - type: input
+    id: service
+    attributes:
+      label: Service
+      placeholder: e.g. Anthropic API, Replicate
+    validations:
+      required: true
+  - type: textarea
+    id: api
+    attributes:
+      label: How can the balance or usage be read?
+      description: Link to the documentation of a usage/balance/credits endpoint, and which key it needs. If you know the response format, paste an example with personal data removed.
+    validations:
+      required: true
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Contribution
+      options:
+        - label: I can test it with a real account
+        - label: I would like to implement it (see CONTRIBUTING.md → Adding a service)

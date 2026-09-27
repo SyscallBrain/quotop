@@ -1,0 +1,328 @@
+# quotop — English (US). This is the reference language: every other locale
+# must have exactly these keys and the same {placeholders}.
+# See CONTRIBUTING.md ("Adding a language").
+
+[meta]
+decimal_separator = "."
+
+[i18n]
+unknown_language = "config.toml: unknown language `{code}` (languages: {languages})"
+
+# Command line: usage, help and the messages printed to stderr.
+[cli]
+usage = "usage: quotop [--json] [--include-paid] [-h | --help] [-V | --version]   (without `--json`, opens the TUI)"
+unknown_argument = "unknown argument `{arg}`"
+warning = "warning: {message}"
+stdout_failed = "could not write to stdout ({error})"
+nothing_written = "{error}; nothing was written"
+help = """
+quotop {version} — remaining balance, credits and quotas of your API services
+
+Usage: quotop [OPTIONS]
+
+Without options, quotop opens the interactive terminal UI.
+
+Options:
+      --json           Refresh once, print the readings as JSON and exit
+      --include-paid   Also read the services whose balance check spends quota
+                       (Brave, Context7)
+  -h, --help           Print this help and exit
+  -V, --version        Print the version and exit
+
+Files:
+  ~/.config/quotop/config.toml   configuration (optional)
+  ~/.config/quotop/keys.env      API keys (must have mode 600)
+  ~/.cache/quotop/last.json      last readings
+
+Exit codes: 0 success, 1 the output could not be written, 2 usage or configuration error"""
+
+[cli.filtered_out]
+one = "{n} per-request provider was left out (`--include-paid` reads it): {ids}"
+other = "{n} per-request providers were left out (`--include-paid` reads them): {ids}"
+
+[cli.within_interval]
+one = "{n} provider read less than {seconds} s ago kept its previous reading: {ids}"
+other = "{n} providers read less than {seconds} s ago kept their previous reading: {ids}"
+
+[cli.unread]
+one = "{n} provider has no reading at all (neither now nor in the cache): {ids}"
+other = "{n} providers have no reading at all (neither now nor in the cache): {ids}"
+
+# config.toml warnings and errors.
+[config]
+unknown_key = "{file}: unknown key `{key}` (ignored)"
+unknown_threshold_key = "{file}: unknown key `thresholds.{provider}.{key}` (ignored)"
+threshold_not_table = "{file}: `thresholds.{provider}` should be a table (ignored)"
+read_failed = "could not read {path}: {message}"
+invalid = "{path} is invalid: {message}"
+invalid_at_line = "{path} is invalid (line {line}): {message}"
+
+# Warnings while loading API keys and subscription credentials.
+[credentials]
+read_failed = "{path}: could not read ({error})"
+open_permissions = "{path}: permissions {mode} give access to group/others, so the file is not read. Run `chmod 600 {path}`"
+claude_unusable = "{path}: no usable `claudeAiOauth.accessToken`/`expiresAt`; Claude has no credential"
+invalid_json = "{path}: invalid JSON ({error})"
+
+# The readings cache.
+[cache]
+read_failed = "{path}: could not read the cache ({error}); ignored, not deleted"
+unreadable = "{path}: unreadable cache ({error}); ignored, not deleted"
+other_version = "{path}: cache version {found} (this version writes {expected}); ignored, not deleted"
+serialization_failed = "could not serialize the cache: {message}"
+leak_in = "leak prevented: {provider}"
+leak = "leak prevented: the cache text contains a secret"
+
+# Saving a key from the services menu.
+[keyfile]
+rejected = "value rejected: {reason}"
+empty = "it is empty"
+has_spaces = "it contains spaces"
+has_control = "it contains control characters"
+
+# Meter labels, keyed by the English label providers emit. English needs no
+# translations, so this table is empty here; other languages translate the
+# labels (quoted keys, e.g. "monthly plan" = "…").
+[labels]
+
+# ── Terminal UI ──────────────────────────────────────────────────────────────
+# Column widths are counted in characters: keep level labels ≤ 8 characters
+# and the category names short.
+
+[tui]
+too_small = "terminal too small (min. 60×12)"
+
+[tui.run]
+no_terminal = "quotop: no interactive terminal; use `quotop --json`"
+terminal_failed = "quotop: could not set up the terminal: {error}"
+screen_failed = "quotop: could not set up the screen: {error}"
+draw_failed = "quotop: drawing the screen failed: {error}"
+keyboard_failed = "quotop: could not read the keyboard: {error}"
+signal_failed = "quotop: warning: could not handle signal {signal} ({error}); the terminal may be left in raw mode"
+
+[tui.header]
+critical.one = "{n} critical"
+critical.other = "{n} critical"
+warning.one = "{n} warning"
+warning.other = "{n} warnings"
+failed.one = "{n} failed"
+failed.other = "{n} failed"
+ok.one = "{n} ok"
+ok.other = "{n} ok"
+no_data.one = "{n} no data"
+no_data.other = "{n} no data"
+updated = "updated {when}"
+no_readings = "no readings yet"
+reading = "reading… ({n})"
+next = "next in {duration}"
+auto_off = "auto refresh off"
+
+[tui.columns]
+service = "SERVICE"
+meter = "METER"
+left = "LEFT"
+value = "VALUE"
+level = "LEVEL"
+
+[tui.list]
+services.one = "{n} service"
+services.other = "{n} services"
+empty = "no services to show — `s` chooses which ones appear"
+position = "{n} of {total}"
+failed = "✕ failed"
+
+[tui.footer]
+move = "move"
+detail = "detail"
+read_row = "read row"
+read_all = "read all"
+read = "read"
+read_this_row = "read this row (incl. $)"
+filter = "filter"
+services = "services"
+preferences = "preferences"
+prefs = "prefs"
+help = "help"
+quit = "quit"
+back = "back"
+theme = "theme"
+bar = "bar"
+language = "language"
+save = "save"
+cancel = "cancel"
+confirm = "confirm"
+delete = "delete"
+show_hide = "show/hide"
+show = "show"
+write_key = "write key"
+key = "key"
+space_key = "space"
+close = "close"
+
+[tui.status]
+ok = "ok"
+no_credential = "no credential"
+no_credential_for = "no credential ({variables})"
+invalid_credential = "invalid credential ({http})"
+expired_credential = "expired credential (open Claude Code to renew it)"
+rate_limited = "rate limited ({http})"
+api_error = "API error ({http}): {message}"
+network_error = "network error: {message}"
+unexpected_format = "unexpected format: {message}"
+unsupported = "not supported (no request made)"
+no_api = "no balance API for this key (see the dashboard)"
+never_read = "no reading at all (neither now nor in the cache)"
+waiting = "waiting for the first reading (`r` reads now)"
+
+[tui.unit]
+credits = "credits"
+tokens = "tokens"
+characters = "characters"
+requests = "requests"
+
+[tui.value]
+percent_used = "{value}% used"
+percent_left = "{value}% left"
+used_of = "{used} / {limit} {unit} used"
+left_of = "{remaining} / {limit} {unit} left"
+balance_of_plan = "{remaining} {unit} (plan {limit})"
+limit_of = "limit of {limit} {unit}"
+used = "{used} {unit} used"
+reset = "reset {when}"
+
+[tui.duration]
+days_hours = "{days}d {hours}h"
+days = "{days}d"
+hours_minutes = "{hours}h {minutes}m"
+hours = "{hours}h"
+minutes = "{minutes}m"
+seconds = "{seconds}s"
+ago = "{duration} ago"
+
+[tui.level]
+ok = "ok"
+warning = "WARNING"
+critical = "CRITICAL"
+exhausted = "DEPLETED"
+no_reference = "no ref."
+
+[tui.category]
+search = "Search"
+llm = "LLM"
+subscription = "Subscriptions"
+other = "Other"
+
+[tui.help]
+title = "help"
+move = "move the selection"
+first_last = "first/last row"
+open_detail = "open the detail"
+back = "back to the list"
+read_row = "read the selected row (including `$` services)"
+read_all = "read everything (including `$` services)"
+filter = "toggle the filter: hide what has no numbers at all"
+services = "services: which ones appear, and writing keys"
+preferences = "preferences: language, theme and bar style"
+this_help = "this help"
+quit = "quit"
+markers = "Markers and signs"
+per_request = "$  costs a request to read: never part of the automatic refresh"
+undocumented = "†  undocumented endpoint: it may stop working"
+bar = "the fraction left (full = plenty of room)"
+levels = "Levels"
+no_reference = "no ref.: the balance has no limit to compare against"
+preferences_title = "Preferences"
+preferences_now = "language {language} · theme {theme} · bar {bar} · `p` changes them"
+preferences_config = "in config.toml: `language`, `theme`, `bar` and the `[colors]` table"
+states = "States"
+states_1 = "ok · no credential · invalid credential (HTTP)"
+states_2 = "expired credential (open Claude Code to renew it) · rate limited (HTTP)"
+states_3 = "API error (HTTP) · network error · unexpected format · not supported"
+states_4 = "no balance API for this key: the dashboard shows the balance"
+notes = "Notes for this run"
+no_notes = "nothing to report"
+
+[tui.detail]
+title = "Detail"
+nothing_selected = "nothing is selected — go back to the list with `Esc`"
+id = "Id"
+category = "Category"
+class = "Class"
+cost = "Cost"
+endpoint = "Endpoint"
+dashboard = "Dashboard"
+thresholds = "Thresholds"
+variables = "Variables"
+status = "Status"
+last_error = "Last error"
+duration = "Duration"
+read_at = "Read at"
+local_time = "{time} (local)"
+meters = "Meters"
+no_meters = "none — the reading has no numbers to show"
+undocumented = "† undocumented endpoint: it may stop working without notice."
+no_credential_hint = "no credential: {variables} missing from the key files (chmod 600)."
+used = "used {value} {unit}"
+limit = "limit {value} {unit}"
+remaining = "remaining {value} {unit}"
+reset_at = "reset {time} (local)"
+no_reset = "no reset"
+fraction_left = "{level} · {percent}% left"
+no_limit = "{level} · no limit to compare against"
+bar_left = "{percent}% left"
+class_exact_balance = "exact balance"
+class_usage_vs_limit = "usage vs limit"
+class_rate_limit_only = "rate limit only"
+class_no_api = "no balance API"
+cost_free = "free"
+cost_per_request = "per request ($) — not part of the automatic refresh"
+thresholds_fraction = "fraction left: warning ≤ {warning} · critical ≤ {critical}"
+thresholds_absolute = "in meter units: warning ≤ {warning} · critical ≤ {critical}"
+
+[tui.preferences]
+title = "Preferences"
+language = "Language"
+theme = "Theme"
+bar = "Bar"
+saves_to = "Enter saves to {path}"
+nowhere = "nowhere to save: the choice lasts for this run only"
+colors_note = "(the [colors] from config.toml apply on top)"
+light = "light"
+terminal_colors = "terminal colors"
+save_failed = "could not save the preferences to {path}: {error}"
+
+[tui.services]
+title = "Services & keys"
+legend = "[x] on the home screen · by default, those with a key (✓) appear"
+claude_session = "Claude Code session"
+no_claude_session = "no Claude Code session"
+your_choice = "your choice"
+key_for = "Key for {service}: "
+step = "({n} of {total})"
+type_key = "paste or type the key"
+characters.one = "{n} character"
+characters.other = "{n} characters"
+saves_to = "Enter saves to {path} (chmod 600)"
+shown = "{service}: shown on the home screen"
+hidden = "{service}: hidden (and not read)"
+claude_not_key = "{service}: the credential is Claude Code's ({variables}), not a key"
+no_key_file = "no key file: `key_files` is empty in config.toml"
+nothing_saved = "nothing was saved"
+key_save_failed = "could not save to {path}: {error}"
+key_saved = "{variables} saved to {path}"
+env_wins = " — but {variables} is set in the environment, which takes precedence over the file"
+reading = " · reading…"
+paid = " · `r` in the list reads it (uses up a request)"
+save_failed = "could not save the services to {path}: {error}"
+
+[tui.notes]
+filter = "f: hiding rows with no credential or no balance API"
+within_interval = "{n} read less than {seconds} s ago: kept the previous reading ({ids})"
+filtered_out = "{n} charged per request, left out of the automatic refresh (`r`/`R` or `--include-paid`): {ids}"
+unread = "{n} with no reading at all, neither now nor in the cache: {ids}"
+
+[tui.config]
+unknown_theme = "config.toml: unknown theme `{id}` (themes: {themes})"
+unknown_bar = "config.toml: unknown bar `{id}` (bars: {bars})"
+unknown_color = "config.toml: unknown color `colors.{role}` (ignored; roles: {roles})"
+bad_color = "config.toml: `colors.{role} = \"{value}\"` is not a color (use `#rrggbb` or `reset`)"

@@ -1,0 +1,60 @@
+# Example quotop configuration.
+#
+# Copy to ~/.config/quotop/config.toml and change what you need. The file is
+# optional: without it, the defaults below apply. quotop never writes to it.
+#
+# An unknown key is a warning and is ignored. Invalid TOML (or a value of the
+# wrong type) makes quotop refuse to start, printing the line of the error and
+# exiting with code 2.
+
+# Interface language: "en-US" (default) or "pt-PT". A choice made in the
+# Preferences screen (key `p`) takes precedence over this.
+language = "en-US"
+
+# Minutes between automatic refreshes; 0 turns automatic refresh off.
+# Automatic refreshes only read free endpoints (never the `$` services).
+interval_min = 15
+
+# Timeout of each HTTP request, in seconds.
+timeout_s = 10
+
+# .env files with API keys, in order of precedence: the first non-empty value
+# wins. Environment variables always win over these files. The first file is
+# also where the Services screen (key `s`) writes keys.
+key_files = ["~/.config/quotop/keys.env"]
+
+# Provider ids to remove entirely (see the table in the README): they are not
+# read and appear neither on the main screen nor in the Services screen. To only
+# hide a service from the main screen, use the Services screen instead.
+disabled = []
+
+# User-Agent sent to Claude's undocumented usage endpoint, which expects the
+# Claude Code client string `claude-code/<version>`.
+claude_user_agent = "claude-code/2.1.282"
+
+# Colour theme: tokyo-night, catppuccin-mocha, catppuccin-latte, gruvbox, nord,
+# dracula, rose-pine or terminal (inherits your terminal colours). A choice made
+# in the Preferences screen (key `p`) takes precedence over this.
+theme = "tokyo-night"
+
+# Bar style: line (━━━╸━), blocks (██▌░░) or dots (⣿⣿⡇⣀⣀).
+bar = "line"
+
+# Override single colours of the theme, as "#rrggbb" or "reset" (the terminal's
+# own colour). Roles: background, text, muted, border, accent, selection, ok,
+# warning, error, bar, track. Uncomment to use.
+# [colors]
+# bar = "#94e2d5"
+# background = "reset"
+
+# Default thresholds are fractions of what REMAINS of a limit:
+# warning below 20 %, critical below 5 %.
+# Per service, thresholds are in the meter's own units — dollars on OpenRouter,
+# credits on Serper — and replace the fractions.
+[thresholds.openrouter]
+warn_below = 5.0       # USD
+critical_below = 1.0
+
+# Another example: Jina counts tokens, and 1 000 000 still goes a long way.
+[thresholds.jina]
+warn_below = 1000000.0

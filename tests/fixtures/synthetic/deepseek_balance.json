@@ -1,0 +1,12 @@
+{
+  "_origin": "synthetic, from the documentation, https://api-docs.deepseek.com/api/get-user-balance, 2026-09-26",
+  "is_available": true,
+  "balance_infos": [
+    {
+      "currency": "CNY",
+      "total_balance": "42.50",
+      "granted_balance": "10.00",
+      "topped_up_balance": "32.50"
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+# quotop — Português (Portugal).
+
+[meta]
+decimal_separator = ","
+
+[i18n]
+unknown_language = "config.toml: idioma desconhecido `{code}` (idiomas: {languages})"
+
+# Linha de comandos: uso, ajuda e as mensagens escritas no stderr.
+[cli]
+usage = "uso: quotop [--json] [--include-paid] [-h | --help] [-V | --version]   (sem `--json` abre a TUI)"
+unknown_argument = "argumento desconhecido `{arg}`"
+warning = "aviso: {message}"
+stdout_failed = "não consegui escrever no stdout ({error})"
+nothing_written = "{error}; não escrevi nada"
+help = """
+quotop {version} — saldo, créditos e quotas dos seus serviços de API
+
+Uso: quotop [OPÇÕES]
+
+Sem opções, o quotop abre a interface interactiva no terminal.
+
+Opções:
+      --json           Faz um refresh, escreve as leituras em JSON e sai
+      --include-paid   Lê também os serviços cuja consulta do saldo gasta quota
+                       (Brave, Context7)
+  -h, --help           Mostra esta ajuda e sai
+  -V, --version        Mostra a versão e sai
+
+Ficheiros:
+  ~/.config/quotop/config.toml   configuração (opcional)
+  ~/.config/quotop/keys.env      chaves de API (têm de ter modo 600)
+  ~/.cache/quotop/last.json      últimas leituras
+
+Códigos de saída: 0 sucesso, 1 não foi possível escrever o resultado, 2 erro de uso ou de configuração"""
+
+[cli.filtered_out]
+one = "{n} provider de custo por pedido ficou de fora (`--include-paid` lê-o): {ids}"
+other = "{n} providers de custo por pedido ficaram de fora (`--include-paid` lê-os): {ids}"
+
+[cli.within_interval]
+one = "{n} provider lido há menos de {seconds} s ficou com a leitura anterior: {ids}"
+other = "{n} providers lidos há menos de {seconds} s ficaram com a leitura anterior: {ids}"
+
+[cli.unread]
+one = "{n} provider sem leitura nenhuma (nem agora nem na cache): {ids}"
+other = "{n} providers sem leitura nenhuma (nem agora nem na cache): {ids}"
+
+# Avisos e erros do config.toml.
+[config]
+unknown_key = "{file}: chave desconhecida `{key}` (ignorada)"
+unknown_threshold_key = "{file}: chave desconhecida `thresholds.{provider}.{key}` (ignorada)"
+threshold_not_table = "{file}: `thresholds.{provider}` devia ser uma tabela (ignorada)"
+read_failed = "não consegui ler {path}: {message}"
+invalid = "{path} inválido: {message}"
+invalid_at_line = "{path} inválido (linha {line}): {message}"
+
+# Avisos ao carregar as chaves de API e as credenciais das subscrições.
+[credentials]
+read_failed = "{path}: não consegui ler ({error})"
+open_permissions = "{path}: permissões {mode} dão acesso a grupo/outros; o ficheiro não é lido. Faça `chmod 600 {path}`"
+claude_unusable = "{path}: sem `claudeAiOauth.accessToken`/`expiresAt` utilizáveis; o Claude fica sem credencial"
+invalid_json = "{path}: JSON inválido ({error})"
+
+# O cache das leituras.
+[cache]
+read_failed = "{path}: não consegui ler o cache ({error}); ignorado e não apagado"
+unreadable = "{path}: cache ilegível ({error}); ignorado e não apagado"
+other_version = "{path}: cache da versão {found} (esta versão escreve {expected}); ignorado e não apagado"
+serialization_failed = "não consegui serializar o cache: {message}"
+leak_in = "fuga evitada: {provider}"
+leak = "fuga evitada: o texto do cache traz um segredo"
+
+# Gravar uma chave a partir do menu de serviços.
+[keyfile]
+rejected = "valor recusado: {reason}"
+empty = "está vazio"
+has_spaces = "tem espaços"
+has_control = "tem caracteres de controlo"
+
+# Rótulos dos medidores, pela chave em inglês que os providers emitem.
+[labels]
+"monthly plan" = "plano mensal"
+"credits" = "créditos"
+"requests/month" = "pedidos/mês"
+"messages/month" = "mensagens/mês"
+"tokens" = "tokens"
+"characters" = "caracteres"
+"balance" = "saldo"
+"core/hour" = "core/hora"
+"5h" = "5 h"
+"session" = "sessão"
+"weekly" = "semanal"
+"monthly" = "mensal"
+"7 days" = "7 dias"
+"7 days Opus" = "7 dias Opus"
+"7 days Sonnet" = "7 dias Sonnet"
+"extra usage" = "uso extra"
+
+# ── Interface de terminal ────────────────────────────────────────────────────
+# As colunas contam caracteres: os níveis não passam de 8 caracteres.
+
+[tui]
+too_small = "terminal demasiado pequeno (mín. 60×12)"
+
+[tui.run]
+no_terminal = "quotop: sem terminal interactivo; use `quotop --json`"
+terminal_failed = "quotop: não consegui preparar o terminal: {error}"
+screen_failed = "quotop: não consegui preparar o ecrã: {error}"
+draw_failed = "quotop: o ecrã falhou: {error}"
+keyboard_failed = "quotop: não consegui ler o teclado: {error}"
+signal_failed = "quotop: aviso: não consegui tratar o sinal {signal} ({error}); o terminal pode ficar em modo bruto"
+
+[tui.header]
+critical.one = "{n} crítico"
+critical.other = "{n} críticos"
+warning.one = "{n} aviso"
+warning.other = "{n} avisos"
+failed.one = "{n} falhou"
+failed.other = "{n} falharam"
+ok.one = "{n} ok"
+ok.other = "{n} ok"
+no_data.one = "{n} sem dados"
+no_data.other = "{n} sem dados"
+updated = "actualizado {when}"
+no_readings = "sem leitura nenhuma"
+reading = "a ler… ({n})"
+next = "próximo em {duration}"
+auto_off = "refresh automático desligado"
+
+[tui.columns]
+service = "SERVIÇO"
+meter = "MEDIDOR"
+left = "RESTA"
+value = "VALOR"
+level = "NÍVEL"
+
+[tui.list]
+services.one = "{n} serviço"
+services.other = "{n} serviços"
+empty = "nenhum serviço a mostrar — `s` escolhe quais aparecem"
+position = "{n} de {total}"
+failed = "✕ falhou"
+
+[tui.footer]
+move = "mover"
+detail = "detalhe"
+read_row = "ler linha"
+read_all = "ler tudo"
+read = "ler"
+read_this_row = "ler esta linha (inclui $)"
+filter = "filtrar"
+services = "serviços"
+preferences = "preferências"
+prefs = "pref."
+help = "ajuda"
+quit = "sair"
+back = "voltar"
+theme = "tema"
+bar = "barra"
+language = "idioma"
+save = "guardar"
+cancel = "cancelar"
+confirm = "confirmar"
+delete = "apagar"
+show_hide = "mostrar/esconder"
+show = "mostrar"
+write_key = "escrever chave"
+key = "chave"
+space_key = "espaço"
+close = "fechar"
+
+[tui.status]
+ok = "ok"
+no_credential = "sem credencial"
+no_credential_for = "sem credencial ({variables})"
+invalid_credential = "credencial inválida ({http})"
+expired_credential = "credencial expirada (abre o Claude Code para renovar)"
+rate_limited = "limitado ({http})"
+api_error = "erro da API ({http}): {message}"
+network_error = "erro de rede: {message}"
+unexpected_format = "formato inesperado: {message}"
+unsupported = "não suportado (sem pedido nenhum)"
+no_api = "sem API de saldo com esta chave (dashboard)"
+never_read = "sem leitura nenhuma (nem agora nem na cache)"
+waiting = "à espera da primeira leitura (`r` lê agora)"
+
+[tui.unit]
+credits = "créditos"
+tokens = "tokens"
+characters = "caracteres"
+requests = "pedidos"
+
+[tui.value]
+percent_used = "{value} % usado"
+percent_left = "{value} % restantes"
+used_of = "{used} / {limit} {unit} usados"
+left_of = "{remaining} / {limit} {unit} restantes"
+balance_of_plan = "{remaining} {unit} (plano {limit})"
+limit_of = "limite de {limit} {unit}"
+used = "{used} {unit} usados"
+reset = "reset {when}"
+
+[tui.duration]
+days_hours = "{days} d {hours} h"
+days = "{days} d"
+hours_minutes = "{hours} h {minutes} min"
+hours = "{hours} h"
+minutes = "{minutes} min"
+seconds = "{seconds} s"
+ago = "há {duration}"
+
+[tui.level]
+ok = "ok"
+warning = "AVISO"
+critical = "CRÍTICO"
+exhausted = "ESGOTADO"
+no_reference = "sem ref."
+
+[tui.category]
+search = "Pesquisa"
+llm = "LLM"
+subscription = "Subscrições"
+other = "Outros"
+
+[tui.help]
+title = "ajuda"
+move = "mover a selecção"
+first_last = "primeira/última linha"
+open_detail = "abrir o detalhe"
+back = "voltar à lista"
+read_row = "ler a linha seleccionada (inclui os `$`)"
+read_all = "ler tudo (inclui os `$`)"
+filter = "alternar o filtro: esconder o que não tem número nenhum"
+services = "serviços: quais aparecem, e escrever chaves"
+preferences = "preferências: idioma, tema e estilo da barra"
+this_help = "esta ajuda"
+quit = "sair"
+markers = "Marcadores e sinais"
+per_request = "$  custo por pedido: nunca entra no refresh automático"
+undocumented = "†  endpoint não documentado: pode deixar de funcionar"
+bar = "a fracção que resta (cheia = há margem)"
+levels = "Níveis"
+no_reference = "sem ref.: o saldo não tem limite com que se compare"
+preferences_title = "Preferências"
+preferences_now = "idioma {language} · tema {theme} · barra {bar} · `p` muda-os"
+preferences_config = "no config.toml: `language`, `theme`, `bar` e a tabela `[colors]`"
+states = "Estados"
+states_1 = "ok · sem credencial · credencial inválida (HTTP)"
+states_2 = "credencial expirada (abre o Claude Code para renovar) · limitado (HTTP)"
+states_3 = "erro da API (HTTP) · erro de rede · formato inesperado · não suportado"
+states_4 = "sem API de saldo com esta chave: o dashboard é que mostra o saldo"
+notes = "Notas desta execução"
+no_notes = "nada a assinalar"
+
+[tui.detail]
+title = "Detalhe"
+nothing_selected = "não há nada seleccionado — volta à lista com `Esc`"
+id = "Id"
+category = "Categoria"
+class = "Classe"
+cost = "Custo"
+endpoint = "Endpoint"
+dashboard = "Dashboard"
+thresholds = "Limiares"
+variables = "Variáveis"
+status = "Estado"
+last_error = "Último erro"
+duration = "Duração"
+read_at = "Lido em"
+local_time = "{time} (local)"
+meters = "Medidores"
+no_meters = "nenhum — a leitura não tem números para mostrar"
+undocumented = "† endpoint não documentado: pode deixar de funcionar sem aviso."
+no_credential_hint = "sem credencial: falta {variables} nos ficheiros de chaves (chmod 600)."
+used = "usado {value} {unit}"
+limit = "limite {value} {unit}"
+remaining = "restante {value} {unit}"
+reset_at = "reset {time} (local)"
+no_reset = "sem reset"
+fraction_left = "{level} · {percent} % por gastar"
+no_limit = "{level} · sem limite para comparar"
+bar_left = "{percent} % resta"
+class_exact_balance = "saldo exacto"
+class_usage_vs_limit = "uso vs limite"
+class_rate_limit_only = "só rate limit"
+class_no_api = "sem API de saldo"
+cost_free = "grátis"
+cost_per_request = "por pedido ($) — fora do refresh automático"
+thresholds_fraction = "fracção restante: aviso ≤ {warning} · crítico ≤ {critical}"
+thresholds_absolute = "em unidades do medidor: aviso ≤ {warning} · crítico ≤ {critical}"
+
+[tui.preferences]
+title = "Preferências"
+language = "Idioma"
+theme = "Tema"
+bar = "Barra"
+saves_to = "Enter guarda em {path}"
+nowhere = "sem sítio onde guardar: a escolha vale só nesta execução"
+colors_note = "(as cores de [colors] no config.toml aplicam-se por cima)"
+light = "claro"
+terminal_colors = "cores do terminal"
+save_failed = "não consegui guardar as preferências em {path}: {error}"
+
+[tui.services]
+title = "Serviços e chaves"
+legend = "[x] aparece no ecrã inicial · por omissão, aparece quem tem chave (✓)"
+claude_session = "sessão do Claude Code"
+no_claude_session = "sem sessão do Claude Code"
+your_choice = "escolha tua"
+key_for = "Chave de {service}: "
+step = "({n} de {total})"
+type_key = "cola ou escreve a chave"
+characters.one = "{n} carácter"
+characters.other = "{n} caracteres"
+saves_to = "Enter grava em {path} (chmod 600)"
+shown = "{service}: aparece no ecrã inicial"
+hidden = "{service}: escondido (e não é lido)"
+claude_not_key = "{service}: a credencial é a do Claude Code ({variables}), não uma chave"
+no_key_file = "sem ficheiro de chaves: `key_files` está vazio no config.toml"
+nothing_saved = "nada foi gravado"
+key_save_failed = "não consegui gravar em {path}: {error}"
+key_saved = "{variables} gravada em {path}"
+env_wins = " — mas {variables} está no ambiente e ganha ao ficheiro"
+reading = " · a ler…"
+paid = " · `r` na lista lê-o (gasta um pedido)"
+save_failed = "não consegui guardar os serviços em {path}: {error}"
+
+[tui.notes]
+filter = "f: a esconder as linhas sem credencial e as de «sem API de saldo»"
+within_interval = "{n} lidos há menos de {seconds} s: ficaram com a leitura anterior ({ids})"
+filtered_out = "{n} por pedido fora do refresh automático (`r`/`R` ou `--include-paid`): {ids}"
+unread = "{n} sem leitura nenhuma, nem agora nem na cache: {ids}"
+
+[tui.config]
+unknown_theme = "config.toml: tema desconhecido `{id}` (temas: {themes})"
+unknown_bar = "config.toml: barra desconhecida `{id}` (barras: {bars})"
+unknown_color = "config.toml: cor desconhecida `colors.{role}` (ignorada; papéis: {roles})"
+bad_color = "config.toml: `colors.{role} = \"{value}\"` não é uma cor (usa `#rrggbb` ou `reset`)"
