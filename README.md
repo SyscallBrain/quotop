@@ -50,6 +50,19 @@ your API quotas.
 
 quotop is a single binary written in Rust. It runs on Linux and macOS.
 
+**Prebuilt binaries**: download the archive for your system from the
+[latest release](https://github.com/SyscallBrain/quotop/releases/latest)
+(Linux x86_64 and ARM64, static; macOS Apple Silicon and Intel), extract it and
+put `quotop` somewhere on your `PATH`:
+
+```sh
+tar xzf quotop-v0.1.0-x86_64-unknown-linux-musl.tar.gz
+install quotop-v0.1.0-x86_64-unknown-linux-musl/quotop ~/.local/bin/
+```
+
+Each archive has a `.sha256` checksum next to it. On macOS, if Gatekeeper
+blocks the binary, run `xattr -d com.apple.quarantine quotop`.
+
 **With Cargo** (Rust 1.88 or newer):
 
 ```sh
@@ -64,7 +77,8 @@ cd quotop
 cargo install --path .
 ```
 
-Both put `quotop` in `~/.cargo/bin`, which `rustup` adds to your `PATH`.
+Both Cargo options put `quotop` in `~/.cargo/bin`, which `rustup` adds to your
+`PATH`.
 
 ## Quick start
 
